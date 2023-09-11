@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import Header from "./components/Header";
 import Menu from "./components/Menu";
+import Battle from "./components/Battle";
 
 const App = () => {
 
@@ -11,6 +12,7 @@ const App = () => {
             <Header />
             <Routes>
                 <Route path='/' element={<Menu />}></Route>
+                <Route path='/battle' element={<Battle />}></Route>
             </Routes>
         </>
     )

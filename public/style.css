@@ -9,7 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 900px;
+    width: 750px;
     height: 150px;
     background-color: blue;
     border-radius: 10px;
@@ -67,3 +67,93 @@
     text-decoration: none;
 }
 
+#battle-hud {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 700px;
+    height: 125px;
+    margin-top: 25px;
+}
+
+#player-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 100px;
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+}
+
+#enemy-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 100px;
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+}
+
+#battle-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+    height: 325px;
+    background-color: orange;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+#battle-log {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+    height: 100px;
+    background-color: silver;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+}
+
+#battle-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 750px;
+    height: 200px;
+    background-color: green;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+#battle-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 750px;
+    height: auto;
+    background-color: purple;
+    border-radius: 10px;
+}
+
+#end-battle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 50px;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+#turn-counter {
+    font-size: 20px;
+}
