@@ -1,20 +1,24 @@
 import React, { useState } from "react";
 
-const BattleGrid = () => {
+const BattleGrid = (props) => {
+    console.log(props.pilot);
+    console.log(props.enemyPilot);
+    
+
     const [grid, setGrid] = useState([
         [null, null, null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, 'X', null, null, null, null],
+        [null, null, null, null, props.pilot.id, null, null, null, null],
         [null, null, null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, 'O', null, null, null, null],
+        [null, null, null, null, props.enemyPilot.id, null, null, null, null],
         [null, null, null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null, null, null],
@@ -30,11 +34,11 @@ const BattleGrid = () => {
                         return (
                             <div key={index}>
                                 {grid.map((grid, index) => {
-                                    if (grid === 'X') {
+                                    if (grid === props.pilot.id) {
                                         return (
                                             <div id="pilot-block" key={index}></div>
                                         )
-                                    } else if (grid === 'O') {
+                                    } else if (grid === props.enemyPilot.id) {
                                         return (
                                             <div id="enemy-block" key={index}></div>
                                         )
