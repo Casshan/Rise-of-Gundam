@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import BattleHUD from "./BattleHUD";
 import BattleGrid from "./BattleGrid";
 import BattleLog from "./BattleLog";
@@ -8,7 +8,7 @@ const Battle = () => {
 
     return (
         <>
-           <div id="battle-container">
+            <div id="battle-container">
                 <BattleHUD />
                 <BattleGrid />
                 <BattleLog />

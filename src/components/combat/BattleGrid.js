@@ -32,11 +32,11 @@ const BattleGrid = () => {
                                 {grid.map((grid, index) => {
                                     if (grid === 'X') {
                                         return (
-                                            <div id="pilot-block" key={index}>{grid}</div>
+                                            <div id="pilot-block" key={index}></div>
                                         )
                                     } else if (grid === 'O') {
                                         return (
-                                            <div id="enemy-block" key={index}>{grid}</div>
+                                            <div id="enemy-block" key={index}></div>
                                         )
                                     } else {
                                         return (

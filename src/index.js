@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import Header from "./components/Header";
 import Menu from "./components/Menu";
-import Battle from "./components/Battle";
+import Battle from "./components/combat/Battle";
 
 const App = () => {
 
