@@ -73,7 +73,7 @@
     align-items: center;
     width: 700px;
     height: 125px;
-    margin-top: 25px;
+    margin-top: 10px;
 }
 
 #player-info {
@@ -82,8 +82,7 @@
     align-items: center;
     width: 200px;
     height: 100px;
-    color: white;
-    background-color: black;
+    background-color: red;
     border-radius: 10px;
 }
 
@@ -93,27 +92,33 @@
     align-items: center;
     width: 200px;
     height: 100px;
-    color: white;
+    background-color: red;
+    border-radius: 10px;
+}
+
+#battle-grid-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 619px;
+    height: 340px;
     background-color: black;
+    margin-top: 10px;
+    margin-bottom: 12px;
     border-radius: 10px;
 }
 
 #battle-grid {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 700px;
-    height: 325px;
-    background-color: orange;
-    margin-top: 10px;
-    border-radius: 10px;
+    flex-wrap: wrap;
+    border: .05px white solid;
 }
 
 #battle-log {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 700px;
+    width: 619px;
     height: 100px;
     background-color: silver;
     margin-top: 10px;
@@ -156,4 +161,36 @@
 
 #turn-counter {
     font-size: 20px;
+}
+
+#block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border: .1px white solid;
+    color: white;
+}
+
+#enemy-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border: .1px white solid;
+    color: red;
+    background-color: red;
+}
+
+#pilot-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border: .1px white solid;
+    color: blue;
+    background-color: blue;
 }
