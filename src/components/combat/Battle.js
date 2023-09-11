@@ -8,8 +8,10 @@ const Battle = () => {
     //testing data
     const [pilotSuit, setPilotSuit] = useState({
         name: "Gundam",
-        health: 1000,
-        energy: 500,
+        maxHealth: 1000,
+        maxEnergy: 500,
+        currentHealth: 1000,
+        currentEnergy: 500,
         melee: 100,
         range: 100,
         armor: 100,
@@ -18,8 +20,10 @@ const Battle = () => {
 
     const [enemySuit, setEnemySuit] = useState({
         name: "Zaku",
-        health: 1000,
-        energy: 500,
+        maxHealth: 1000,
+        maxEnergy: 500,
+        currentHealth: 1000,
+        currentEnergy: 500,
         melee: 100,
         range: 100,
         armor: 100,
@@ -28,8 +32,10 @@ const Battle = () => {
 
     const [pilot, setPilot] = useState({
         name: 'Amuro',
-        health: 100,
-        focus: 50,
+        maxHealth: 100,
+        maxFocus: 50,
+        currentHealth: 100,
+        currentFocus: 50,
         control: 20,
         accuracy: 20,
         dodge: 20,
@@ -40,8 +46,10 @@ const Battle = () => {
 
     const [enemyPilot, setEnemyPilot] = useState({
         name: 'Char',
-        health: 100,
-        focus: 50,
+        maxHealth: 100,
+        maxFocus: 50,
+        currentHealth: 100,
+        currentFocus: 50,
         control: 20,
         accuracy: 20,
         dodge: 20,
@@ -54,6 +62,7 @@ const Battle = () => {
     const [turn, setTurn] = useState({
         count: 1,
         active: null,
+        previousTurns: []
     })
 
     return (
@@ -64,21 +73,21 @@ const Battle = () => {
                     enemyPilot={enemyPilot} setEnemyPilot={setEnemyPilot}
                     pilotSuit={pilotSuit} setPilotSuit={setPilotSuit}
                     enemySuit={enemySuit} setEnemySuit={setEnemySuit}
-                    turn={setTurn} setTurn={setTurn}
+                    turn={turn} setTurn={setTurn}
                 />
                 <BattleGrid
                     pilot={pilot} setPilot={setPilot}
                     enemyPilot={enemyPilot} setEnemyPilot={setEnemyPilot}
                     pilotSuit={pilotSuit} setPilotSuit={setPilotSuit}
                     enemySuit={enemySuit} setEnemySuit={setEnemySuit}
-                    turn={setTurn} setTurn={setTurn}
+                    turn={turn} setTurn={setTurn}
                 />
                 <BattleLog
                     pilot={pilot} setPilot={setPilot}
                     enemyPilot={enemyPilot} setEnemyPilot={setEnemyPilot}
                     pilotSuit={pilotSuit} setPilotSuit={setPilotSuit}
                     enemySuit={enemySuit} setEnemySuit={setEnemySuit}
-                    turn={setTurn} setTurn={setTurn}
+                    turn={turn} setTurn={setTurn}
                 />
             </div>
 
