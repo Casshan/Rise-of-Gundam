@@ -1,30 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const BattleGrid = (props) => {
-    console.log(props.pilot);
-    console.log(props.enemyPilot);
-    
+    const [grid, setGrid] = useState([]);
 
-    const [grid, setGrid] = useState([
-        [null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, props.pilot.id, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, props.enemyPilot.id, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null]
-    ]);
+    useEffect(() => {
+        const generateGrid = () => {
+            let arr = [];
+            const generateY = () => {
+                let y = [];
+
+                for (let i = 0; i < 9; i++) {
+                    y.push(null)
+                }
+                return y;
+            }
+
+            for (let i = 0; i < 18; i++) {
+                if (i === 5) {
+                    arr.push([null, null, null, null, props.pilot.id, null, null, null, null])
+                } else if (i === 12) {
+                    arr.push([null, null, null, null, props.enemyPilot.id, null, null, null, null])
+                } else { arr.push(generateY()) }
+            }
+
+            return setGrid(arr);
+        }
+
+        generateGrid();
+    }, []);
 
     return (
         <>
@@ -45,6 +48,7 @@ const BattleGrid = (props) => {
                                     } else {
                                         return (
                                             <div id="block" key={index}>{grid}</div>
+
                                         )
                                     }
 
