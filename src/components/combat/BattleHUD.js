@@ -1,36 +1,41 @@
 import React from "react";
 
 const BattleHUD = (props) => {
+    const { pilot, enemyPilot, turn } = props;
 
     return (
         <>
             <div id="battle-hud">
                 <div id="player-info">
-                    <div>{`${props.pilot.name}`}</div>
-                    <div>{`${props.pilot.currentHealth}`} / {`${props.pilot.maxHealth}`} Health</div>
-                    <div>{`${props.pilot.currentFocus}`} / {`${props.pilot.maxFocus}`} Focus</div>
+                    <div>PILOT</div>
+                    <div>{`${pilot.name}`}</div>
+                    <div>{`${pilot.currentHealth}`} / {`${pilot.maxHealth}`} Health</div>
+                    <div>{`${pilot.currentFocus}`} / {`${pilot.maxFocus}`} Focus</div>
                 </div>
 
                 <div id="player-info">
-                    <div>{`${props.pilot.suit.name}`}</div>
-                    <div>{`${props.pilot.suit.currentHealth}`} / {`${props.pilot.suit.maxHealth}`} Health</div>
-                    <div>{`${props.pilot.suit.currentEnergy}`} / {`${props.pilot.suit.maxEnergy}`} Energy</div>
+                    <div>MOBILE SUIT</div>
+                    <div>{`${pilot.suit.name}`}</div>
+                    <div>{`${pilot.suit.currentHealth}`} / {`${pilot.suit.maxHealth}`} Health</div>
+                    <div>{`${pilot.suit.currentEnergy}`} / {`${pilot.suit.maxEnergy}`} Energy</div>
                 </div>
 
                 <div id="turn-counter">
-                    Turn {`${props.turn.count}`}
+                    Turn {`${turn.count}`}
                 </div>
 
                 <div id="enemy-info">
-                    <div>{`${props.enemyPilot.suit.name}`}</div>
-                    <div>{`${props.enemyPilot.suit.currentHealth}`} / {`${props.enemyPilot.suit.maxHealth}`} Health</div>
-                    <div>{`${props.enemyPilot.suit.currentEnergy}`} / {`${props.enemyPilot.suit.maxEnergy}`} Energy</div>
+                    <div>MOBILE SUIT</div>
+                    <div>{`${enemyPilot.suit.name}`}</div>
+                    <div>{`${enemyPilot.suit.currentHealth}`} / {`${enemyPilot.suit.maxHealth}`} Health</div>
+                    <div>{`${enemyPilot.suit.currentEnergy}`} / {`${enemyPilot.suit.maxEnergy}`} Energy</div>
                 </div>
 
                 <div id="enemy-info">
-                    <div>{`${props.enemyPilot.name}`}</div>
-                    <div>{`${props.enemyPilot.currentHealth}`} / {`${props.enemyPilot.maxHealth}`} Health</div>
-                    <div>{`${props.enemyPilot.currentFocus}`} / {`${props.enemyPilot.maxFocus}`} Focus</div>
+                    <div>PILOT</div>
+                    <div>{`${enemyPilot.name}`}</div>
+                    <div>{`${enemyPilot.currentHealth}`} / {`${enemyPilot.maxHealth}`} Health</div>
+                    <div>{`${enemyPilot.currentFocus}`} / {`${enemyPilot.maxFocus}`} Focus</div>
                 </div>
             </div>
         </>

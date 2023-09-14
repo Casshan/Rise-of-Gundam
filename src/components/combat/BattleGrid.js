@@ -1,60 +1,122 @@
 import React, { useState, useEffect } from "react";
 
 const BattleGrid = (props) => {
+    const { pilot, setPilot, enemyPilot, setEnemyPilot, pilotSuit, enemySuit, turn, setTurn } = props;
     const [grid, setGrid] = useState([]);
 
     useEffect(() => {
-        const generateGrid = () => {
-            let arr = [];
-            const generateY = () => {
-                let y = [];
+        const generateGrid = (x, y) => {
+            let xCord = 0;
+            let yCord = 0;
+            let gridArr = [];
 
-                for (let i = 0; i < 9; i++) {
-                    y.push(null)
+            const generateY = (length) => {
+                let arr = [];
+                for (let i = 0; i < length; i++) {
+                    yCord = i;
+                    arr.push([xCord, yCord]);
                 }
-                return y;
+                return arr;
             }
 
-            for (let i = 0; i < 18; i++) {
-                if (i === 5) {
-                    arr.push([null, null, null, null, props.pilot.id, null, null, null, null])
-                } else if (i === 12) {
-                    arr.push([null, null, null, null, props.enemyPilot.id, null, null, null, null])
-                } else { arr.push(generateY()) }
+            for (let i = 0; i < x; i++) {
+                gridArr.push(generateY(y));
+                xCord++;
             }
 
-            return setGrid(arr);
+            const placePilot = (arr) => {
+                for (let i = 0; i < arr.length; i++) {
+                    if (i === pilot.location[0]) {
+                        arr[i].fill(pilot.id, [pilot.location[1]], pilot.location[1] + 1)
+                    }
+                }
+            }
+
+            const placeEnemyPilot = (arr) => {
+                for (let i = 0; i < arr.length; i++) {
+                    if (i === enemyPilot.location[0]) {
+                        arr[i].fill(enemyPilot.id, [enemyPilot.location[1]], enemyPilot.location[1] + 1)
+                    }
+                }
+            }
+
+            placePilot(gridArr);
+            placeEnemyPilot(gridArr);
+
+            return gridArr;
         }
 
-        generateGrid();
-    }, []);
+        setGrid(generateGrid(18, 9));
+    }, [pilot, enemyPilot, turn]);
+
+    const movementRangeValidator = (player, cordinates) => {
+        if (cordinates[0] > player.suit.movement + player.location[0] || cordinates[1] > player.suit.movement + player.location[1] ||
+            cordinates[0] < player.location[0] - player.suit.movement || cordinates[1] < player.location[1] - player.suit.movement) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    const move = (event) => {
+        let cordinates = event.target.getAttribute("value").split(',').map(Number);
+        console.log(cordinates);
+        console.log(turn);
+
+        if (turn.active === pilot.id && turn.hasMoved === false && movementRangeValidator(pilot, cordinates) === true) {
+            pilot.location = cordinates;
+            turn.hasMoved = true;
+            turn.lastAction = `${pilot.name} moved to (${cordinates[0]}. ${cordinates[1]})`;
+            setPilot({ ...pilot });
+            return setTurn({...turn});
+        } else if (turn.active === pilot.id && movementRangeValidator(pilot, cordinates) === false) {
+            return console.log("That is too far.");
+        }
+
+        if (turn.active === enemyPilot.id && turn.hasMoved === false && movementRangeValidator(enemyPilot, cordinates) === true) {
+            enemyPilot.location = cordinates;
+            turn.hasMoved = true;
+            turn.lastAction = `${enemyPilot.name} moved to (${cordinates[0]}. ${cordinates[1]})`;
+            setEnemyPilot({ ...enemyPilot });
+            return setTurn({...turn});
+        } else if (turn.active === enemyPilot.id && movementRangeValidator(enemyPilot, cordinates) === false) {
+            return console.log("That is too far.");
+        }
+
+    }
 
     return (
         <>
             <div id="battle-grid-container">
                 <div id="battle-grid">
-                    {grid.map((grid, index) => {
+                    {grid.map((yAxis, index) => {
                         return (
                             <div key={index}>
-                                {grid.map((grid, index) => {
-                                    if (grid === props.pilot.id) {
+                                {yAxis.map((cell, index) => {
+                                    if (cell === pilot.id) {
                                         return (
                                             <div id="pilot-block" key={index}></div>
                                         )
-                                    } else if (grid === props.enemyPilot.id) {
+                                    } else if (cell === enemyPilot.id) {
                                         return (
                                             <div id="enemy-block" key={index}></div>
                                         )
+                                    } else if (turn.active === 0 && turn.hasMoved === false && movementRangeValidator(pilot, cell) === true) {
+                                        return (
+                                            <div value={cell} onClick={move} id="pilot-movement-block" key={index}></div>
+                                        )
+                                    } else if ( turn.active === 1 && turn.hasMoved === false && movementRangeValidator(enemyPilot, cell) === true) {
+                                        return (
+                                            <div value={cell} onClick={move} id="enemy-movement-block" key={index}></div>
+                                        )
                                     } else {
                                         return (
-                                            <div id="block" key={index}>{grid}</div>
-
+                                            <div value={cell} onClick={move} id="block" key={index}></div>
                                         )
                                     }
-
-                                })}
+                                }
+                                )}
                             </div>
-
                         )
                     })}
                 </div>

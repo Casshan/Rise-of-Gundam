@@ -15,7 +15,22 @@ const Battle = () => {
         melee: 100,
         range: 100,
         armor: 100,
-        speed: 100
+        speed: 100,
+        movement: 2,
+        attacks: [
+            {
+                slot: 1,
+                name: "Beam Rifle",
+                Range: 4,
+                damage: 200,
+            },
+            {
+                slot: 2,
+                name: "Beam Saber",
+                Range: 1,
+                damage: 200,
+            }
+        ]
     })
 
     const [enemySuit, setEnemySuit] = useState({
@@ -27,7 +42,15 @@ const Battle = () => {
         melee: 100,
         range: 100,
         armor: 100,
-        speed: 100
+        speed: 100,
+        movement: 2,
+        attacks: {
+            slot1: {
+                name: "Beam Rifle",
+                Range: 4,
+                damage: 200,
+            }
+        }
     })
 
     const [pilot, setPilot] = useState({
@@ -39,7 +62,7 @@ const Battle = () => {
         control: 20,
         accuracy: 20,
         dodge: 20,
-        location: null,
+        location: [5, 4],
         suit: pilotSuit,
         id: 0
     })
@@ -53,7 +76,7 @@ const Battle = () => {
         control: 20,
         accuracy: 20,
         dodge: 20,
-        location: null,
+        location: [12, 4],
         suit: enemySuit,
         id: 1
     })
@@ -61,7 +84,9 @@ const Battle = () => {
     //game state
     const [turn, setTurn] = useState({
         count: 1,
-        active: null,
+        active: 0,
+        hasMoved: false,
+        lastAction: null,
         previousTurns: []
     })
 
@@ -91,7 +116,13 @@ const Battle = () => {
                 />
             </div>
 
-            <BattleMenu />
+            <BattleMenu
+                pilot={pilot} setPilot={setPilot}
+                enemyPilot={enemyPilot} setEnemyPilot={setEnemyPilot}
+                pilotSuit={pilotSuit} setPilotSuit={setPilotSuit}
+                enemySuit={enemySuit} setEnemySuit={setEnemySuit}
+                turn={turn} setTurn={setTurn}
+            />
         </>
     )
 }

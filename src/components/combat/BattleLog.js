@@ -1,12 +1,13 @@
 import React from "react";
 
-const BattleLog = () => {
+const BattleLog = (props) => {
+    const { turn, pilot, enemyPilot } = props;
 
     return (
         <>
-        <div id="battle-log">
-            Battle Log
-        </div>
+            <div id="battle-log">
+                {turn.lastAction}
+            </div>
         </>
     )
 }

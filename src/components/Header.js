@@ -4,7 +4,7 @@ const Header = () => {
 
     return (
         <>
-            <h1 id="banner">Banner</h1>
+            <h1 id="banner">RISE OF GUNDAM</h1>
         </>
     )
 }
