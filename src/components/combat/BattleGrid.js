@@ -27,7 +27,7 @@ const BattleGrid = (props) => {
             const placePilot = (arr) => {
                 for (let i = 0; i < arr.length; i++) {
                     if (i === pilot.location[0]) {
-                        arr[i].fill(pilot.id, [pilot.location[1]], pilot.location[1] + 1)
+                        return arr[i].fill(pilot.id, [pilot.location[1]], pilot.location[1] + 1)
                     }
                 }
             }
@@ -35,13 +35,38 @@ const BattleGrid = (props) => {
             const placeEnemyPilot = (arr) => {
                 for (let i = 0; i < arr.length; i++) {
                     if (i === enemyPilot.location[0]) {
-                        arr[i].fill(enemyPilot.id, [enemyPilot.location[1]], enemyPilot.location[1] + 1)
+                        return arr[i].fill(enemyPilot.id, [enemyPilot.location[1]], enemyPilot.location[1] + 1)
                     }
                 }
             }
 
+            const placeDirection = () => {
+                if (enemyPilot.location[0] > pilot.location[0]) {
+                    return (
+                        pilot.direction = 2,
+                        enemyPilot.direction = 6
+                    )
+                } else if (enemyPilot.location[0] < pilot.location[0]) {
+                    return (
+                        pilot.direction = 6,
+                        enemyPilot.direction = 2
+                    )
+                } else if (enemyPilot.location[1] > pilot.location[1] && enemyPilot.location[0] === pilot.location[0]) {
+                    return (
+                        pilot.direction = 4,
+                        enemyPilot.direction = 0
+                    )
+                } else if (enemyPilot.location[1] < pilot.location[1] && enemyPilot.location[0] === pilot.location[0]) {
+                    return (
+                        pilot.direction = 0,
+                        enemyPilot.direction = 4
+                    )
+                } 
+            }
+
             placePilot(gridArr);
             placeEnemyPilot(gridArr);
+            placeDirection();
 
             return gridArr;
         }
@@ -58,6 +83,10 @@ const BattleGrid = (props) => {
         }
     }
 
+    const attackRangePreview = (attack) => {
+
+    }
+
     const move = (event) => {
         let cordinates = event.target.getAttribute("value").split(',').map(Number);
         console.log(cordinates);
@@ -68,7 +97,7 @@ const BattleGrid = (props) => {
             turn.hasMoved = true;
             turn.lastAction = `${pilot.name} moved to (${cordinates[0]}. ${cordinates[1]})`;
             setPilot({ ...pilot });
-            return setTurn({...turn});
+            return setTurn({ ...turn });
         } else if (turn.active === pilot.id && movementRangeValidator(pilot, cordinates) === false) {
             return console.log("That is too far.");
         }
@@ -78,7 +107,7 @@ const BattleGrid = (props) => {
             turn.hasMoved = true;
             turn.lastAction = `${enemyPilot.name} moved to (${cordinates[0]}. ${cordinates[1]})`;
             setEnemyPilot({ ...enemyPilot });
-            return setTurn({...turn});
+            return setTurn({ ...turn });
         } else if (turn.active === enemyPilot.id && movementRangeValidator(enemyPilot, cordinates) === false) {
             return console.log("That is too far.");
         }
@@ -105,7 +134,7 @@ const BattleGrid = (props) => {
                                         return (
                                             <div value={cell} onClick={move} id="pilot-movement-block" key={index}></div>
                                         )
-                                    } else if ( turn.active === 1 && turn.hasMoved === false && movementRangeValidator(enemyPilot, cell) === true) {
+                                    } else if (turn.active === 1 && turn.hasMoved === false && movementRangeValidator(enemyPilot, cell) === true) {
                                         return (
                                             <div value={cell} onClick={move} id="enemy-movement-block" key={index}></div>
                                         )

@@ -44,13 +44,20 @@ const Battle = () => {
         armor: 100,
         speed: 100,
         movement: 2,
-        attacks: {
-            slot1: {
+        attacks: [
+            {
+                slot: 1,
                 name: "Beam Rifle",
                 Range: 4,
                 damage: 200,
+            },
+            {
+                slot: 2,
+                name: "Beam Saber",
+                Range: 1,
+                damage: 200,
             }
-        }
+        ]
     })
 
     const [pilot, setPilot] = useState({
@@ -63,6 +70,7 @@ const Battle = () => {
         accuracy: 20,
         dodge: 20,
         location: [5, 4],
+        direction: null,
         suit: pilotSuit,
         id: 0
     })
@@ -76,6 +84,7 @@ const Battle = () => {
         control: 20,
         accuracy: 20,
         dodge: 20,
+        direction: null,
         location: [12, 4],
         suit: enemySuit,
         id: 1
@@ -87,6 +96,7 @@ const Battle = () => {
         active: 0,
         hasMoved: false,
         lastAction: null,
+        selectedAction: null,
         previousTurns: []
     })
 

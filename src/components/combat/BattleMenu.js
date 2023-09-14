@@ -6,8 +6,12 @@ const BattleMenu = (props) => {
     const pilotAttacks = pilot.suit.attacks;
 
 
-    const attackSelect = () => {
-        console.log("click");
+    const attackSelect = (event) => {
+        if (turn.active === 0) {
+        console.log(pilotAttacks[event.target.value])
+        turn.selectedAction = pilotAttacks[event.target.value];
+        return setTurn({...turn});
+        }
     }
 
     const attackSubmit = () => {
@@ -36,7 +40,7 @@ const BattleMenu = (props) => {
                     <div id="attacks-container">
                         {pilotAttacks.map((slot, index) => {
                             return (
-                                <button onClick={attackSelect} id="battle-menu-button" key={index}>{slot.name}</button>
+                                <button onClick={attackSelect} value={index} id="battle-menu-button" key={index}>{slot.name}</button>
                             )
                         })}
                     </div>
