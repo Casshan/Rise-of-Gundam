@@ -168,6 +168,17 @@ body {
     border: .1px white solid;
 }
 
+#pilot-action-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    opacity: 0.4;
+    background-color: blue;
+    border: .1px white solid;
+}
+
 #enemy-movement-block {
     display: flex;
     justify-content: center;
@@ -186,6 +197,17 @@ body {
     opacity: 0.4;
     background-color: red;
     border: .1px white solid;
+}
+
+#target-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border: .1px white solid;
+    opacity: 0.4;
+    background-color: purple;
 }
 
 #enemy-block {

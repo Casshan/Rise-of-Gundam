@@ -61,7 +61,7 @@ const BattleGrid = (props) => {
                         pilot.direction = 0,
                         enemyPilot.direction = 4
                     )
-                } 
+                }
             }
 
             placePilot(gridArr);
@@ -83,14 +83,8 @@ const BattleGrid = (props) => {
         }
     }
 
-    const attackRangePreview = (attack) => {
-
-    }
-
     const move = (event) => {
         let cordinates = event.target.getAttribute("value").split(',').map(Number);
-        console.log(cordinates);
-        console.log(turn);
 
         if (turn.active === pilot.id && turn.hasMoved === false && movementRangeValidator(pilot, cordinates) === true) {
             pilot.location = cordinates;
@@ -111,7 +105,6 @@ const BattleGrid = (props) => {
         } else if (turn.active === enemyPilot.id && movementRangeValidator(enemyPilot, cordinates) === false) {
             return console.log("That is too far.");
         }
-
     }
 
     return (
@@ -129,6 +122,12 @@ const BattleGrid = (props) => {
                                     } else if (cell === enemyPilot.id) {
                                         return (
                                             <div id="enemy-block" key={index}></div>
+                                        )
+                                    } else if (turn.selectedAction && pilot.direction === 2 &&
+                                        cell[0] <= pilot.location[0] + turn.selectedAction.range &&
+                                        cell[0] > pilot.location[0] && cell[1] === pilot.location[1]) {
+                                        return (
+                                            <div value={cell} onClick={move} id="pilot-action-block" key={index}></div>
                                         )
                                     } else if (turn.active === 0 && turn.hasMoved === false && movementRangeValidator(pilot, cell) === true) {
                                         return (

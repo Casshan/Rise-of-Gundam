@@ -21,13 +21,13 @@ const Battle = () => {
             {
                 slot: 1,
                 name: "Beam Rifle",
-                Range: 4,
+                range: 5,
                 damage: 200,
             },
             {
                 slot: 2,
                 name: "Beam Saber",
-                Range: 1,
+                range: 1,
                 damage: 200,
             }
         ]
@@ -48,13 +48,13 @@ const Battle = () => {
             {
                 slot: 1,
                 name: "Beam Rifle",
-                Range: 4,
+                range: 4,
                 damage: 200,
             },
             {
                 slot: 2,
                 name: "Beam Saber",
-                Range: 1,
+                range: 1,
                 damage: 200,
             }
         ]

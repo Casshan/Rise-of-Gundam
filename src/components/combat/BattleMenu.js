@@ -8,8 +8,8 @@ const BattleMenu = (props) => {
 
     const attackSelect = (event) => {
         if (turn.active === 0) {
-        console.log(pilotAttacks[event.target.value])
         turn.selectedAction = pilotAttacks[event.target.value];
+        console.log(turn.selectedAction);
         return setTurn({...turn});
         }
     }
@@ -22,6 +22,7 @@ const BattleMenu = (props) => {
         if (turn.active === 0) {
             turn.active = 1;
             turn.hasMoved = false;
+            turn.selectedAction = null;
             turn.count++;
             return setTurn({...turn});
         } else if (turn.active === 1) {
