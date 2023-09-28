@@ -24,7 +24,7 @@ const getUser = async ({ username, password }) => {
     try {
         const { rows: [user] } = await client.query(`
         SELECT *
-        FROM user
+        FROM users
         WHERE username='${username}'
         `);
         if (user && await bcrypt.compare(password, user.password)) {

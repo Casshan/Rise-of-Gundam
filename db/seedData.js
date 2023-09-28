@@ -90,10 +90,10 @@ const createIntialUsers = async () => {
             isAdmin: true
         });
 
-        const testUser = await createUser({
-            username: 'wungus',
+        const casshern = await createUser({
+            username: 'casshern',
             password: 'password',
-            email: 'wungus@rog.com',
+            email: 'casshern@rog.com',
             isAdmin: false
         });
 

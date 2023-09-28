@@ -14,7 +14,7 @@ router.post("/login", async (req, res) => {
     const { username, password } = req.body;
     try {
         if (!username || !password) {
-            return;
+            return null;
         }
         const user = await getUser({ username, password });
         if (user) {
