@@ -2,4 +2,4 @@
 
 A grid turn based action game based off Mobile Suit Gundam.
 
-![Rise of Gundam](https://i.imgur.com/P1XStvl.jpg)
+![Rise of Gundam](https://i.imgur.com/adgS03x.jpg)
