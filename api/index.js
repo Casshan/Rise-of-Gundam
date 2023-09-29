@@ -33,7 +33,12 @@ apiRouter.use(async (req, res, next) => {
     }
 });
 
+// ROUTER: /api/users
 const usersRouter = require("./users");
 apiRouter.use("/users", usersRouter);
+
+// ROUTER /api/characters
+const charactersRouter = require("./characters");
+apiRouter.use("/characters", charactersRouter);
 
 module.exports = apiRouter;

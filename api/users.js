@@ -63,7 +63,7 @@ router.post("/register", async (req, res) => {
             res.send({
                 success: false,
                 error: "PasswordTooShortError",
-                message: "Password must be atleast 8 characters long.",
+                message: "Password must be at least 8 characters long.",
             });
         } else {
             const user = await createUser(req.body);

@@ -43,8 +43,11 @@ const createTables = async () => {
                 control INTEGER NOT NULL,
                 accuracy INTEGER NOT NULL,
                 dodge INTEGER NOT NULL,
-                location TEXT,
-                direction INTEGER
+                level INTEGER,
+                experience INTEGER,
+                rank VARCHAR(255),
+                money INTEGER,
+                profile_image VARCHAR(255)
             );
 
             CREATE TABLE suits (
@@ -90,13 +93,6 @@ const createIntialUsers = async () => {
             isAdmin: true
         });
 
-        const casshern = await createUser({
-            username: 'casshern',
-            password: 'password',
-            email: 'casshern@rog.com',
-            isAdmin: false
-        });
-
         console.log('Finished creating users.');
     } catch (error) {
         console.log('Error creating users.');
@@ -109,7 +105,7 @@ const createIntialCharacters = async () => {
 
         const adminCharacter = await createCharacter({
             userId: 1,
-            name: 'admin',
+            name: 'Amuro Ray',
             max_health: '100',
             max_focus: '20',
             current_health: '100',
@@ -117,13 +113,16 @@ const createIntialCharacters = async () => {
             control: '10',
             accuracy: '50',
             dodge: '50',
-            location: null,
-            direction: null
+            level: 1,
+            experience: 0,
+            rank: 'Recruit',
+            money: 1000,
+            profile_image: 'https://static.zerochan.net/Amuro.Ray.full.3824958.jpg'
         });
 
-        const testCharacter = await createCharacter({
-            userId: 2,
-            name: 'wungus',
+        const adminCharacter2 = await createCharacter({
+            userId: 1,
+            name: 'Char Azanble',
             max_health: '100',
             max_focus: '20',
             current_health: '100',
@@ -131,8 +130,11 @@ const createIntialCharacters = async () => {
             control: '10',
             accuracy: '50',
             dodge: '50',
-            location: null,
-            direction: null
+            level: 1,
+            experience: 0,
+            rank: 'Recruit',
+            money: 1000,
+            profile_image: 'https://i.imgur.com/RAQgfwD.png'
         });
 
         console.log('Finished creating characters.');
@@ -182,17 +184,6 @@ const createIntialCharacterSuits = async () => {
             characterId: 1,
             suitId: 1,
             name: 'Gundam',
-            max_health: 1000,
-            max_energy: 500,
-            current_health: 1000,
-            current_energy: 500,
-            movement: 2
-        });
-
-        const wungusZaku = await createCharacterSuit({
-            characterId: 2,
-            suitId: 2,
-            name: 'Zaku II',
             max_health: 1000,
             max_energy: 500,
             current_health: 1000,
