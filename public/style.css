@@ -159,7 +159,51 @@ body {
 #errorMessage {
     width: auto;
     height: 20px;
+}
 
+#start-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+#start-window {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 150px;
+    background-color: rgba(39, 38, 38, 0.809);
+    width: 700px;
+    height: 570px;
+    border-radius: 2px;
+    box-shadow: 0px 6px 6px black;
+    border-radius: 10px;
+}
+
+#start-character {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 30px;
+    color: white;
+    font-size: 20px;
+}
+
+#start-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#start-image {
+    width: 225px;
+    height: 225px;
+    border: 2px solid black;
+    border-radius: 25px;
 }
 
 #menu {

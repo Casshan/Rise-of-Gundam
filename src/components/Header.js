@@ -16,9 +16,11 @@ const Header = (props) => {
                 <div id="nav-bar">
                     <div>News</div>
                     <div>Game Guide</div>
-                    <div><Link to="/login">Login</Link></div>
-                    <div><Link to="/" onClick={logout}>Logout</Link></div>
-                    <div>Register</div>
+                    {props.isLoggedIn ? <div>Account</div> : null}
+                    {props.isLoggedIn ? <div><Link to="/" onClick={logout}>Logout</Link></div> : null }
+                    {props.isLoggedIn ? null : <div><Link to="/login">Login</Link></div> }
+                    {props.isLoggedIn ? null : <div>Register</div> }
+
                 </div>
             </div>
         </>

@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
-import Header from "./Header";
-import Footer from "./Footer";
 import axios from "axios";
 
 
@@ -73,7 +71,7 @@ const Login = (props) => {
                         </div>
 
                         <div id="errorMessage">
-                            {props.isLoggedIn ? <Navigate to='/' /> : <div className='text-danger'>{errorMessage}</div>}
+                            {props.isLoggedIn ? <Navigate to='/start' /> : <div className='text-danger'>{errorMessage}</div>}
                         </div>
 
                         <button
