@@ -173,23 +173,13 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
     margin-top: 150px;
     background-color: rgba(39, 38, 38, 0.809);
     width: 700px;
     height: 570px;
-    border-radius: 2px;
     box-shadow: 0px 6px 6px black;
     border-radius: 10px;
-}
-
-#start-character {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin: 30px;
-    color: white;
-    font-size: 20px;
 }
 
 #start-info {
@@ -197,13 +187,16 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: white;
+    font-size: 19px;
 }
 
 #start-image {
-    width: 225px;
-    height: 225px;
+    width: 350px;
     border: 2px solid black;
-    border-radius: 25px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    height: auto;
 }
 
 #menu {

@@ -14,6 +14,7 @@ const App = () => {
     const [user, setUser] = useState({});
     const [userToken, setUserToken] = useState(window.localStorage.getItem('token'));
     const [isLoggedIn, setIsLoggedIn] = useState(window.localStorage.getItem('token'));
+    const [playerCharacter, setPlayerCharacter] = useState({});
 
     const getUserData = async () => {
         if (userToken) {
@@ -43,7 +44,7 @@ const App = () => {
             <Routes>
                 <Route path='/' element={<Home />}></Route>
                 <Route path='/login' element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setUserToken={setUserToken}/>}></Route>
-                <Route path='/start' element={<Start userToken={userToken} user={user}/>}></Route>
+                <Route path='/start' element={<Start userToken={userToken} user={user} playerCharacter={playerCharacter} setPlayerCharacter={setPlayerCharacter}/>}></Route>
                 <Route path='/menu' element={<Menu />}></Route>
                 <Route path='/battle' element={<Battle />}></Route>
             </Routes>

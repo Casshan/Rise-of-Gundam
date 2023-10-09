@@ -35,7 +35,7 @@ const createTables = async () => {
             CREATE TABLE characters (
                 id SERIAL PRIMARY KEY,
                 "userId" INTEGER REFERENCES users(id),
-                name VARCHAR(20) NOT NULL,
+                name VARCHAR(20) UNIQUE NOT NULL,
                 max_health INTEGER NOT NULL,
                 max_focus INTEGER NOT NULL,
                 current_health INTEGER NOT NULL,
@@ -75,9 +75,9 @@ const createTables = async () => {
             );
 
         `)
-        console.log('Finished creating tables!');
+        console.log('Finished creating tables.');
     } catch (error) {
-        console.log('Error creating tables!');
+        console.log('Error creating tables.');
         console.error(error);
     };
 };
@@ -119,24 +119,7 @@ const createIntialCharacters = async () => {
             money: 1000,
             profile_image: 'https://static.zerochan.net/Amuro.Ray.full.3824958.jpg'
         });
-
-        const adminCharacter2 = await createCharacter({
-            userId: 1,
-            name: 'Char Azanble',
-            max_health: '100',
-            max_focus: '20',
-            current_health: '100',
-            current_focus: '20',
-            control: '10',
-            accuracy: '50',
-            dodge: '50',
-            level: 1,
-            experience: 0,
-            rank: 'Recruit',
-            money: 1000,
-            profile_image: 'https://i.imgur.com/RAQgfwD.png'
-        });
-
+        
         console.log('Finished creating characters.');
     } catch (error) {
         console.log('Error creating characters.');

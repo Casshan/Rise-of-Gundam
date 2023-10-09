@@ -31,26 +31,31 @@ const Start = (props) => {
         getCharacters();
     }, [props.user]);
 
-    console.log(characters);
+    console.log(props.playerCharacter);
 
     return (
         <>
             <div id="start-container">
                 <div id="start-window">
+
                     {characters.map((character, index) => {
                         return (
-                            <div id="start-character" key="index">
-                                <img id="start-image" src={character.profile_image}></img>
+                            <div id="start-character" key={index}>
+                                <div>
+                                    <img id="start-image" src={character.profile_image}></img>
+                                </div>
                                 <div id="start-info">
-                                    <div>{`${character.name}`}</div>
-                                    <div>{`${character.rank}`}</div>
-                                    <div>{`Level ${character.level}`}</div>
-                                    <button
-                                        type="submit"
-                                        id="login-submit"
-                                        className="btn btn-primary">
-                                        Play
-                                    </button>
+                                    <div>{character.name}</div>
+                                    <div>{character.rank}</div>
+                                    <div>Level {character.level}</div>
+                                    <div>
+                                        <button
+                                            type="submit"
+                                            id="login-submit"
+                                            className="btn btn-primary">
+                                            Play
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         )
